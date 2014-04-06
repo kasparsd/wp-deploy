@@ -2,7 +2,8 @@
  
 SLUG=$(basename $(dirname $PWD))
 
-# Checkout the assets branch
+# These are needed because this itself is a Git repo
+export GIT_WORK_TREE=../git
 export GIT_DIR=../git/.git
 
 assets_exist=`git show-ref refs/heads/assets`

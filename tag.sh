@@ -4,11 +4,16 @@ if [ $# -lt 1 ]; then
 	echo 'usage: tag.sh 1.2.3'
 	exit
 fi
- 
-SLUG=$(basename $(dirname $PWD))
+
+# args
 TAG_NAME=$1
 
+SLUG=$(basename $(dirname $PWD))
+
+# These are needed because this itself is a Git repo
+export GIT_WORK_TREE=../git
 export GIT_DIR=../git/.git
+
 git checkout -f master
 git tag $TAG_NAME
 git push

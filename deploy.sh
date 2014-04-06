@@ -5,9 +5,12 @@ MSG=${1-'Deploy from git'}
 BRANCH=${2-'trunk'}
 
 SLUG=$(basename $(dirname $PWD))
-
 SRC_DIR=../git
 DEST_DIR=../svn/$BRANCH
+
+# These are needed because this itself is a Git repo
+export GIT_WORK_TREE=../git
+export GIT_DIR=../git/.git
 
 # make sure we're deploying from the right dir
 if [ ! -d "$SRC_DIR/.git" ]; then
@@ -25,7 +28,6 @@ do
 	rm $file
 done
 
-export GIT_DIR=../git/.git
 git checkout -f master
 
 # copy everything over from git
