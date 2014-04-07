@@ -26,3 +26,7 @@ the slug of your plugin in the WordPress plugin repository:
 	 |   +-- tag.sh
 	 |   +-- ...
 
+### Credits
+
+Based on ["Deploying from git to svn" by Scribu](http://scribu.net/blog/deploying-from-git-to-svn.html)
+
