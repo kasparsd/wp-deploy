@@ -5,21 +5,21 @@ the slug of your plugin in the WordPress plugin repository:
 
 	your-plugin-slug
 	 |
-	 +-- git
+	 +-- git (your Git repo)
 	 |   |
 	 |   +-- .git
 	 |   +-- readme.md
 	 |   +-- your-plugin-slug.php
 	 |   +-- ...
 	 |
-	 +-- svn
+	 +-- svn (your SVN repo)
 	 |   |
 	 |   +-- assets
 	 |   +-- trunk
 	 |   +-- tags
 	 |   +-- ...
 	 |   
-	 +-- wp-deploy
+	 +-- wp-deploy (this repo)
 	 |   |
 	 |   +-- .git
 	 |   +-- deploy.sh
