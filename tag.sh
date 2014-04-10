@@ -11,8 +11,8 @@ TAG_NAME=$1
 SLUG=$(basename $(dirname $PWD))
 
 # These are needed because this itself is a Git repo
-export GIT_WORK_TREE=../git
-export GIT_DIR=../git/.git
+export GIT_WORK_TREE=$(dirname $PWD)/git
+export GIT_DIR=$(dirname $PWD)/git/.git
 
 git checkout -f master
 git tag $TAG_NAME

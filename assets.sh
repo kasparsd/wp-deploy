@@ -3,8 +3,8 @@
 SLUG=$(basename $(dirname $PWD))
 
 # These are needed because this itself is a Git repo
-export GIT_WORK_TREE=../git
-export GIT_DIR=../git/.git
+export GIT_WORK_TREE=$(dirname $PWD)/git
+export GIT_DIR=$(dirname $PWD)/git/.git
 
 assets_exist=`git show-ref refs/heads/assets`
 
