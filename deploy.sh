@@ -19,7 +19,7 @@ if [ ! -d "$SRC_DIR/.git" ]; then
 fi
 
 # make sure the SVN repo exists
-if [ ! -d "$DEST_DIR" ]; then
+if [ ! -d "$(dirname $PWD)/svn" ]; then
 	echo "Coudn't find the SVN repo at $(dirname $PWD)/svn. Trying to create one..."
 	svn co http://plugins.svn.wordpress.org/$SLUG/ $(dirname $PWD)/svn
 	exit
