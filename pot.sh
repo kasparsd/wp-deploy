@@ -1,12 +1,14 @@
 #!/bin/bash
 
 TYPE=${1-'wp-plugin'}
-SLUG=$(basename $(dirname $PWD))
+
+BASEDIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+SLUG=$(basename $BASEDIR)
 
 # These are needed because this itself is a Git repo
-export GIT_WORK_TREE=$(dirname $PWD)/git
-export GIT_DIR=$(dirname $PWD)/git/.git
+export GIT_WORK_TREE=${BASEDIR}/git
+export GIT_DIR=${BASEDIR}/git/.git
 
 git checkout -f master
 
-php $PWD/wp-develop/tools/i18n/makepot.php $TYPE $GIT_WORK_TREE $GIT_WORK_TREE/languages/$SLUG.pot
+php $BASEDIR/wp-deploy/wp-develop/tools/i18n/makepot.php $TYPE $GIT_WORK_TREE $GIT_WORK_TREE/languages/$SLUG.pot

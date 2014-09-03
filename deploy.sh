@@ -4,13 +4,14 @@
 MSG=${1-'Deploy from git'}
 BRANCH=${2-'trunk'}
 
-SLUG=$(basename $(dirname $PWD))
-SRC_DIR=$(dirname $PWD)/git
-DEST_DIR=$(dirname $PWD)/svn/$BRANCH
+BASEDIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+SLUG=$(basename $BASEDIR)
+SRC_DIR=${BASEDIR}/git
+DEST_DIR=${BASEDIR}/svn/$BRANCH
 
 # These are needed because this itself is a Git repo
-export GIT_WORK_TREE=$(dirname $PWD)/git
-export GIT_DIR=$(dirname $PWD)/git/.git
+export GIT_WORK_TREE=${BASEDIR}/git
+export GIT_DIR=${BASEDIR}/git/.git
 
 # make sure we're deploying from the right dir
 if [ ! -d "$SRC_DIR/.git" ]; then
@@ -19,9 +20,9 @@ if [ ! -d "$SRC_DIR/.git" ]; then
 fi
 
 # make sure the SVN repo exists
-if [ ! -d "$(dirname $PWD)/svn" ]; then
-	echo "Coudn't find the SVN repo at $(dirname $PWD)/svn. Trying to create one..."
-	svn co http://plugins.svn.wordpress.org/$SLUG/ $(dirname $PWD)/svn
+if [ ! -d "${BASEDIR}/svn" ]; then
+	echo "Coudn't find the SVN repo at ${BASEDIR}/svn. Trying to create one..."
+	svn co http://plugins.svn.wordpress.org/$SLUG/ ${BASEDIR}/svn
 	exit
 fi
 
