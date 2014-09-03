@@ -8,11 +8,12 @@ fi
 # args
 TAG_NAME=$1
 
-SLUG=$(basename $(dirname $PWD))
+BASEDIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+SLUG=$(basename $BASEDIR)
 
 # These are needed because this itself is a Git repo
-export GIT_WORK_TREE=$(dirname $PWD)/git
-export GIT_DIR=$(dirname $PWD)/git/.git
+export GIT_WORK_TREE=${BASEDIR}/git
+export GIT_DIR=${BASEDIR}/git/.git
 
 git checkout -f master
 git tag $TAG_NAME

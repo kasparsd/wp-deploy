@@ -1,10 +1,11 @@
 #!/bin/bash
  
-SLUG=$(basename $(dirname $PWD))
+BASEDIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+SLUG=$(basename $BASEDIR)
 
 # These are needed because this itself is a Git repo
-export GIT_WORK_TREE=$(dirname $PWD)/git
-export GIT_DIR=$(dirname $PWD)/git/.git
+export GIT_WORK_TREE=${BASEDIR}/git
+export GIT_DIR=${BASEDIR}/git/.git
 
 assets_exist=`git show-ref refs/heads/assets`
 
