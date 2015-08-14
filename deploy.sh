@@ -4,7 +4,7 @@
 MSG=${1-'Deploy from git'}
 BRANCH=${2-'trunk'}
 
-BASEDIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+BASEDIR=$( cd `dirname "$0"`/.. && pwd )
 SLUG=$(basename $BASEDIR)
 SRC_DIR=${BASEDIR}/git
 DEST_DIR=${BASEDIR}/svn/$BRANCH

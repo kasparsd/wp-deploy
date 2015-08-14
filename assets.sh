@@ -1,6 +1,6 @@
 #!/bin/bash
- 
-BASEDIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+
+BASEDIR=$( cd `dirname "$0"`/.. && pwd )
 SLUG=$(basename $BASEDIR)
 
 # These are needed because this itself is a Git repo
