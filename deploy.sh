@@ -44,6 +44,10 @@ cd $DEST_DIR
 # Transform the readme
 if [ -f readme.md ]; then
 	mv readme.md readme.txt
+	if [ -f CHANGELOG.md ]; then
+		cat CHANGELOG.md >> readme.txt
+		rm CHANGELOG.md
+	fi
 	sed -i '' -e 's/^# \(.*\)$/=== \1 ===/' -e 's/ #* ===$/ ===/' -e 's/^## \(.*\)$/== \1 ==/' -e 's/ #* ==$/ ==/' -e 's/^### \(.*\)$/= \1 =/' -e 's/ #* =$/ =/' readme.txt
 fi
 
