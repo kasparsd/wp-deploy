@@ -30,7 +30,7 @@ else
 fi
 
 # copy everything over from git
-rsync --recursive --exclude='*.git*' $SRC_DIR/* $DEST_DIR
+rsync --recursive --exclude=".*" $SRC_DIR/* $DEST_DIR
 
 # check .svnignore
 for file in $(cat "$SRC_DIR/.svnignore" 2> /dev/null)
