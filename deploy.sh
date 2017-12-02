@@ -16,9 +16,8 @@ mkdir -p $DEST_DIR
 svn add $DEST_DIR 2> /dev/null
 
 # delete everything except .svn dirs
-for file in $(find $DEST_DIR/* -type f -and -not -path "*.svn*")
-do
-	rm $file
+for file in $(find $DEST_DIR/* -not -name ".svn" -print); do
+	rm -rf $file
 done
 
 # check if we need to checkout a branch
