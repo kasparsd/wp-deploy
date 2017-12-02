@@ -52,4 +52,10 @@ svn stat | awk '/^\!/ {print $2}' | xargs svn rm --force
 
 svn stat
 
-svn ci -m "$MSG"
+read -r -p "Commit to SVN? (y/n) " should_commit
+
+if [ "$should_commit" = "y" ]; then
+	svn ci -m "$MSG"
+else
+	echo "Commit Aborted!"
+fi
